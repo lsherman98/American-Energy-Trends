@@ -1,0 +1,1 @@
+{"version":3,"file":"main.css","mappings":"AAEA,SACI,uB","sources":["webpack://amped-up-america/./src/styles/example.scss"],"sourcesContent":["$color: purple;\n\n#main > h1 {\n    border: color 2px solid;\n}"],"names":[],"sourceRoot":""}
