@@ -1,7 +1,9 @@
-import Example from "./scripts/example"
+import { drawNetTotalEnergyChart } from "./scripts/draw";
+import { handleFormClick } from "./scripts/handleform";
 
-document.addEventListener("DOMContentLoaded", () => {
-    const main = document.getElementById('main')
-    new Example(main)
-    console.log('hello world')
-})
+await drawNetTotalEnergyChart()
+
+document.getElementById('generateChartButton').addEventListener('click', handleFormClick)
+
+
+

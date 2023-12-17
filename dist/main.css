@@ -1,3 +1,13 @@
-#main>h1{border:color 2px solid}
-
-/*# sourceMappingURL=main.css.map*/
+/*!*************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
+  \*************************************************************************************************************************************/
+.tooltip {
+  position: absolute;
+  padding: 10px;
+  background-color: steelblue;
+  color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+  display: none;
+  opacity: 0.75;
+}
