@@ -1,10 +1,10 @@
-import { drawNetTotalEnergyChart } from "./draw";
+import { drawNetTotalEnergyChart } from "./charts/draw-net-total-energy";
 
 
 
-export async function handleFormClick(event) {
+export async function netEnergyHandleFormClick(event) {
         event.preventDefault();
-        const form = document.getElementById('energyChartForm')
+        const form = document.getElementById('energy-chart-form-form')
         const formData = new FormData(form);
         const startYear = formData.get('startYear');
         const endYear = formData.get('endYear');
@@ -14,17 +14,17 @@ export async function handleFormClick(event) {
         
         if (endYear <= startYear) {
             alert("End Year must be greater than Start Year");
-            return; // Prevent form submission
+            return
         }
-        hideForm()
+        hideNetEnergyForm()
 
         drawNetTotalEnergyChart(startYear.toString(), endYear.toString(), selectedEnergyTypes)
 }
 
-export function showForm() {
-    document.getElementById('energyChartForm').style.display ='block'
+export function showNetEnergyForm() {
+    document.getElementById('energy-chart-form-form').style.display ='block'
 }
 
-export function hideForm() {
-    document.getElementById('energyChartForm').style.display = 'none'
+export function hideNetEnergyForm() {
+    document.getElementById('energy-chart-form-form').style.display = 'none'
 }

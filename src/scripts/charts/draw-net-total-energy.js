@@ -1,11 +1,11 @@
 import * as d3 from "d3"
-import { hideForm, showForm } from "./handleform";
-import {netTotalEnergy} from "./data"
+import { hideNetEnergyForm, showNetEnergyForm } from "../handleform";
+import {netTotalEnergy} from "../data"
 
 
 export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergyTypes) {
-    document.getElementById('chart-container').innerHTML = ``
-    hideForm()
+    document.getElementById('net-energy-chart').innerHTML = ``
+    hideNetEnergyForm()
 
     const data = await netTotalEnergy(startYear, endYear, selectedEnergyTypes)
     // console.log(data)
@@ -35,7 +35,7 @@ export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergy
 
 
 
-    const svg = d3.select("#chart-container")
+    const svg = d3.select("#net-energy-chart")
         .append("svg")
             .attr("width", width + margin.left + margin.right + 200)
             .attr("height", height + margin.top + margin.bottom)
@@ -336,7 +336,7 @@ export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergy
         .attr("fill", function (d, i) { return colorScale(i); })
         .attr("width", 10).attr("height", 10);
 
-    showForm()
+    showNetEnergyForm()
     }
 
 

@@ -41,6 +41,18 @@ export function cleanMSNData(data) {
             case ("NUETPUS"):
                 object.msn = "NUCLEAR"
                 break
+            case ("BMTCBUS"):
+                object.msn = "BioMass Consumption"
+                break
+            case ("CLTCBUS"):
+                object.msn = "Coal Consumption"
+                break
+            case ("FFTCBUS"):
+                object.msn = "Fossil Fuels Consumption"
+                break
+            case ("RETCBUS"):
+                object.msn = "Renewable Energy Consumption"
+                break
             default:
                 break;
         }

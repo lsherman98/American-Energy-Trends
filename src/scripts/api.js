@@ -9,12 +9,9 @@ const defaultFuel = {
    5: "PAETPUS",
    6: "NUETPUS",
    7: "SOETPUS",
-   8: "EETPUS",
-   9: "ELETPUS"
+   8: "ELETPUS",
+   9: "HVETPUS"
 }
-
-
-
 
 export function fetchNetTotalEnergy(startYear = '1949', endYear = '2023', selectedEnergyTypes = defaultFuel) {
     const baseUrl = "https://api.eia.gov/v2/total-energy/data/?frequency=annual&data[0]=value"
@@ -42,3 +39,38 @@ export function fetchNetTotalEnergy(startYear = '1949', endYear = '2023', select
         .catch(error => console.log(error))
 }
 
+export function fetchCentsPerKWH(startYear = '1976-07', endYear = '2023-12') {
+    const url = `https://api.eia.gov/v2/total-energy/data/?frequency=monthly&data[0]=value&facets[msn][]=ESTCUUS&start=${startYear}&end=${endYear}&sort[0][column]=period&sort[0][direction]=asc&offset=0&length=5000` + api_key
+
+    return fetch(url, { headers: { 'Accept': 'application/json' } })
+        .then(res => {
+            if (res.ok) {
+                return res.json()
+            } else {
+                return Promise.reject(new Error('Something went wrong'))
+            }
+        })
+        .then(resBody => {
+            let data = resBody.response.data
+            return data
+        })
+        .catch(error => console.log(error))
+}
+
+export function fetchTotalConsumption() {
+    const url = "https://api.eia.gov/v2/total-energy/data/?frequency=annual&data[0]=value&facets[msn][]=BMTCBUS&facets[msn][]=CLTCBUS&facets[msn][]=FFTCBUS&facets[msn][]=RETCBUS&start=1949&end=2023&sort[0][column]=period&sort[0][direction]=asc&sort[1][column]=msn&sort[1][direction]=asc&offset=0&length=5000" + api_key
+
+    return fetch(url, { headers: { 'Accept': 'application/json' } })
+        .then(res => {
+            if (res.ok) {
+                return res.json()
+            } else {
+                return Promise.reject(new Error('Something went wrong'))
+            }
+        })
+        .then(resBody => {
+            let data = resBody.response.data
+            return data
+        })
+        .catch(error => console.log(error))
+}

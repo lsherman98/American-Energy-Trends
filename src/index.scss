@@ -9,5 +9,19 @@
     opacity: .75;
 }
 
+rect {
+      pointer-events: all;
+      fill-opacity: 0;
+      stroke-opacity: 0;
+      z-index: 1;
+}
 
+.tooltip-line {
+  stroke-opacity: 0.5;
+} 
+
+
+#energy-chart-form-form {
+    display: none;
+}
 

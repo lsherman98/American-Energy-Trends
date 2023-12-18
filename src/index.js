@@ -1,9 +1,12 @@
-import { drawNetTotalEnergyChart } from "./scripts/draw";
-import { handleFormClick } from "./scripts/handleform";
+import { drawCentsPerKWH } from "./scripts/charts/draw-cents-per-kwh";
+import { drawNetTotalEnergyChart } from "./scripts/charts/draw-net-total-energy";
+import { drawTotalConsumption } from "./scripts/charts/draw-total-fuel-consumption";
+import { netEnergyHandleFormClick } from "./scripts/handleform";
 
-await drawNetTotalEnergyChart()
+// await drawNetTotalEnergyChart()
+// await drawCentsPerKWH()
 
-document.getElementById('generateChartButton').addEventListener('click', handleFormClick)
-
+await drawTotalConsumption()
+document.getElementById('generate-chart-submit').addEventListener('click', netEnergyHandleFormClick)
 
 
