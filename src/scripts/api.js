@@ -74,3 +74,22 @@ export function fetchTotalConsumption() {
         })
         .catch(error => console.log(error))
 }
+
+
+export function fetchEmissionsToGDP() {
+    const url = "https://api.eia.gov/v2/total-energy/data/?frequency=annual&data[0]=value&facets[msn][]=GDPRVUS&facets[msn][]=TETCEUS&start=1949&end=2023&sort[0][column]=period&sort[0][direction]=asc&sort[1][column]=msn&sort[1][direction]=asc&offset=0&length=5000" + api_key
+
+    return fetch(url, { headers: { 'Accept': 'application/json' } })
+        .then(res => {
+            if (res.ok) {
+                return res.json()
+            } else {
+                return Promise.reject(new Error('Something went wrong'))
+            }
+        })
+        .then(resBody => {
+            let data = resBody.response.data
+            return data
+        })
+        .catch(error => console.log(error))
+}

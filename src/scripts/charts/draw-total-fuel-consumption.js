@@ -5,7 +5,6 @@ import { cleanMSNData } from "../cleandata"
 export async function drawTotalConsumption() {
     const raw_data = await totalConsumption()
 
-    console.log(raw_data)
 
     const labels = ["BioMass", "Coal", "Fossil Fuels", "Renewables"]
     const colors = ["#d62728", "#ff7f0e", "#1f77b4", "#2ca02c"]
@@ -26,16 +25,16 @@ export async function drawTotalConsumption() {
     let data = dataByYear[selectedYear]
 
     const pie = d3.pie()
-    const arc = d3.arc().innerRadius(100).outerRadius(200)
+    const arc = d3.arc().innerRadius(200).outerRadius(400)
 
     const local = d3.local()
 
     const svg = d3.select('#consumption-pie-chart')
         .append("svg")
-        .attr('width', 600)
-        .attr("height", 600)
+        .attr('width', 800)
+        .attr("height", 800)
         .append('g')
-        .attr('transform', 'translate(300, 300)')
+        .attr('transform', 'translate(400, 400)')
 
 
     const path = svg.selectAll('path')
@@ -51,6 +50,7 @@ export async function drawTotalConsumption() {
     const label = svg.selectAll('text')
         .data(pie(data))
         .enter().append('text')
+        .attr("classed", "pie-label")
         .attr("transform", function (d) {
             return "translate(" + arc.centroid(d) + ")";
         })
@@ -59,6 +59,7 @@ export async function drawTotalConsumption() {
         .text(function (d, i) {
             return labels[i];
         });
+        
 
     const slider = d3.select('#pie-chart-slider')
 
@@ -88,4 +89,7 @@ export async function drawTotalConsumption() {
                 });
         })
 
+
+
+    document.getElementById('total-consumption-chart').style.display = 'block'
 }

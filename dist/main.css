@@ -12,7 +12,7 @@
   opacity: 0.75;
 }
 
-rect {
+.listening-rect {
   pointer-events: all;
   fill-opacity: 0;
   stroke-opacity: 0;
@@ -23,6 +23,16 @@ rect {
   stroke-opacity: 0.5;
 }
 
-#energy-chart-form-form {
+#energy-chart-form {
   display: none;
+}
+
+#total-consumption-chart {
+  text-align: center;
+  display: none;
+}
+
+#pie-chart-slider {
+  width: 20%;
+  margin: 20px;
 }

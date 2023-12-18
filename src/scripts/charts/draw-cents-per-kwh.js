@@ -130,6 +130,7 @@ export async function drawCentsPerKWH() {
         .attr("stroke-dasharray", "2,2");
 
     const listeningRect = svg.append("rect")
+        .attr("class", "listening-rect")
         .attr("width", width)
         .attr("height", height);
 
@@ -175,14 +176,14 @@ export async function drawCentsPerKWH() {
         tooltipLineY.style("display", "none");
     });
 
-    // svg.append("text")
-    //     .attr("class", "chart-title")
-    //     .attr("x", margin.left - 115)
-    //     .attr("y", margin.top - 100)
-    //     .style("font-size", "20px")
-    //     .style("font-weight", "bold")
-    //     .style("font-family", "sans-serif")
-    //     .text("Nintendo Co., Ltd. (NTDOY)");
+    svg.append("text")
+        .attr("class", "chart-title")
+        .attr("x", margin.left)
+        .attr("y", margin.top - 100)
+        .style("font-size", "20px")
+        .style("font-weight", "bold")
+        .style("font-family", "sans-serif")
+        .text("Average Cost(¢) per Kilowatt Hour (kWh)");
 
 
     // svg.append("text")

@@ -5,14 +5,13 @@ import {netTotalEnergy} from "../data"
 
 export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergyTypes) {
     document.getElementById('net-energy-chart').innerHTML = ``
-    hideNetEnergyForm()
-
+    // hideNetEnergyForm()
+    
     const data = await netTotalEnergy(startYear, endYear, selectedEnergyTypes)
-    // console.log(data)
 
     const margin = {top: 70, right: 30, bottom: 40, left: 80};
-    const width = 1200 - margin.left - margin.right;
-    const height = 500 - margin.top - margin.bottom;
+    const width = 1500 - margin.left - margin.right;
+    const height = 800 - margin.top - margin.bottom;
 
     const x = d3.scaleTime()
         .domain(d3.extent(data, d => d.period))
@@ -41,6 +40,15 @@ export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergy
             .attr("height", height + margin.top + margin.bottom)
         .append("g")
             .attr("transform", `translate(${margin.left}, ${margin.top})`)
+
+    svg.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0 - margin.left)
+        .attr("x", 0 - height / 2)
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("Net Generation in Million Kilowatthours");
+
 
     const tooltip = d3.select("body")
         .append("div")
@@ -132,28 +140,6 @@ export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergy
             tooltip.style("display", "none");
         });
       
-    
-    // svg.append("path")
-    //     .datum(pumped_hydro)
-    //     .attr("stroke", d => colorScale(d))
-    //     .attr("fill", "none")
-    //     .attr("stroke-width", 2)
-    //     .attr("d", line)
-    //     .clone()
-    //     .attr("stroke", "transparent")
-    //     .attr("stroke-width", 5)
-    //     .on("mouseover", (e) => {
-    //         const [xCoord, yCoord] = d3.pointer(e, this)
-
-    //         tooltip
-    //             .style("display", "block")
-    //             .style("left", `${xCoord + margin.left}px`)
-    //             .style("top", `${yCoord + margin.top}px`)
-    //             .text("Pumped HydroElectric")
-    //     })
-    //     .on("mouseout", e => {
-    //         tooltip.style("display", "none");
-    //     });
     
     svg.append("path")
         .datum(conventional_hydro)
@@ -335,6 +321,15 @@ export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergy
     lineLegend.append("rect")
         .attr("fill", function (d, i) { return colorScale(i); })
         .attr("width", 10).attr("height", 10);
+
+    svg.append("text")
+        .attr("class", "chart-title")
+        .attr("x", margin.left)
+        .attr("y", margin.top - 100)
+        .style("font-size", "20px")
+        .style("font-weight", "bold")
+        .style("font-family", "sans-serif")
+        .text("Total Net Energy Generation by Fuel Type");
 
     showNetEnergyForm()
     }

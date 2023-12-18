@@ -1,13 +1,20 @@
-import { fetchCentsPerKWH, fetchNetTotalEnergy, fetchTotalConsumption } from "./api";
+import { fetchCentsPerKWH, fetchEmissionsToGDP, fetchNetTotalEnergy, fetchTotalConsumption } from "./api";
 import { cleanMSNData } from "./cleandata";
 
+let data;
 export async function netTotalEnergy(startYear, endYear, selectedEnergyTypes) {
-    try {
-        let data = await fetchNetTotalEnergy(startYear, endYear, selectedEnergyTypes)
-        return cleanMSNData(data)
-    } catch (error) {
-        console.error('Error in netTotalEnergy:', error);
-        throw error;
+    if (data) {
+        return data.filter((d) => {
+            return d.period >= startYear && d.period <= endYear && selectedEnergyTypes.includes(d.msn)
+        })
+    } else {
+        try {
+            data = await fetchNetTotalEnergy()
+            return cleanMSNData(data)
+        } catch (error) {
+            console.error('Error in netTotalEnergy:', error);
+            throw error;
+        }
     }
 }
 
@@ -31,5 +38,16 @@ export async function totalConsumption() {
     }
 }
 
+
+
+export async function emissionsToGDP() {
+    try {
+        let data = await fetchEmissionsToGDP()
+        return data
+    } catch (error) {
+        console.error('Error in energyConsumptionPerDollarGDP:', error);
+        throw error;
+    }
+}
 
 
