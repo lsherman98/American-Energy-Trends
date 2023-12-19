@@ -24,45 +24,57 @@ body {
   stroke-opacity: 0.5;
 } 
 
-#total-consumption-chart {
-  text-align: center;
+#consumption-pie-chart  {
+  margin-left: 45%;
 }
 
+
 #pie-chart-slider {
-  width: 20%;
+  width: 80%;
   margin: 20px;
 
 }
+
+#selected-year {
+  font-family: 'Merriweather', serif;
+  font-size: 24px;
+}
+
+
+#website-title {
+  position: fixed;
+  padding-left: 15px;
+  font-family: 'Merriweather', serif;
+  text-align: left;
+}
+
+#website-title h1 {
+  padding: 10px;
+  border: solid 1px black;
+}
+
 
 .navbar {
    background-color: rgb(219, 215, 195);
    overflow: hidden;
    display: flex;
    justify-content: center;
+   padding-top: 60px;
+   flex-grow: 1;
 }
 
-// .navbar button {
-//    float: center;
-//    display: block;
-//    color: rgb(0, 0, 0);
-//    text-align: center;
-//    padding: 14px 16px;
-//    text-decoration: none;
-//    font-size: 17px;
-//    border: none;
-//    cursor: pointer;
-//    background-color: white;
-// }
 
 .navbar button {
   background-color: rgb(219, 215, 195);
   color: #6e6e6e;
   padding: 12px 20px;
-  font-size: 16px;
+  font-size: 20px;
   border: 1px;
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-family: 'Merriweather', serif;
+  
 }
 
 .navbar button:hover {
@@ -80,7 +92,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgb(38, 173, 160);
+  background-color: rgb(212, 208, 186);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -90,7 +102,7 @@ body {
 
 .spinner {
   border: 4px solid rgba(0, 0, 0, 0.1);
-  border-top: 4px solid #3498db;
+  border-top: 4px solid #e5f4ff;
   border-radius: 50%;
   width: 100px;
   height: 100px;
@@ -100,4 +112,72 @@ body {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.title {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  height: 20vh;
+  width: 17%;
+  padding-top: 5%;
+  padding-left: 150px;
+  text-align: center;
+
+}
+
+.title h2 {
+  font-family: 'Merriweather', serif;
+  font-size: 24px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid black;
+  padding-bottom: 5px;
+}
+
+.title p {
+  font-family: 'Merriweather', serif;
+  font-style: italic;
+  margin-top: 5px;
+}
+
+#net-energy .title {
+  padding-top: 75px;
+  text-align: top;
+  padding-left: 130px;
+}
+
+#cents-per-kwh-chart .title {
+  left: 25%;
+}
+
+#total-consumption-chart .title {
+  margin-top: 150px;
+  margin-left: 200px;
+}
+
+#emissions-to-gdp .title {
+
+}
+
+#net-energy .title {
+
+}
+
+.gdp-text {
+  font-family: 'Merriweather', serif;
+  font-style: medium;
+}
+
+.emissions-text {
+  font-family: 'Merriweather', serif;
+  font-style: medium;
+}
+
+#net-energy-chart {
+  padding-left: 10px;
+  margin-top: 20px;
+}
+
+#energy-chart-form {
+  font-family: 'Merriweather', serif;
 }

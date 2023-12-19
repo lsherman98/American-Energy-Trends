@@ -9,9 +9,37 @@ loadingScreen.style.display = 'flex';
 await drawCentsPerKWH()
 loadingScreen.style.display = 'none'
 showChart('cents-per-kwh-chart')
-await drawNetTotalEnergyChart()
+
+document.getElementById('cents-per-kwh-chart-btn').addEventListener('click', function () {
+    showChart('cents-per-kwh-chart')
+})
+
+document.getElementById('total-consumption-chart-btn').innerText = "Loading..."
+document.getElementById('emissions-to-gdp-btn').innerText = "Loading..."
+document.getElementById('net-energy-btn').innerText = "Loading..."
+
 await drawTotalConsumption()
+document.getElementById('total-consumption-chart-btn').innerText = "Total Fuel Consumption"
+
+document.getElementById('total-consumption-chart-btn').addEventListener('click', function () {
+    showChart('total-consumption-chart')
+})
+
 await drawEmissionsToGDP()
+document.getElementById('emissions-to-gdp-btn').innerText = "Emissions & GDP"
+
+document.getElementById('emissions-to-gdp-btn').addEventListener('click', function () {
+    showChart('emissions-to-gdp')
+})
+
+await drawNetTotalEnergyChart()
+document.getElementById('net-energy-btn').innerText = "Net Energy by Type"
+
+document.getElementById('net-energy-btn').addEventListener('click', function () {
+    showChart('net-energy')
+})
+
+document.getElementById('energy-chart-form').addEventListener('input', netEnergyHandleFormChange)
 
 
 function showChart(chartId) {
@@ -19,22 +47,8 @@ function showChart(chartId) {
     charts.forEach(chart => chart.style.display = 'none');  
 
     const selectedChart = document.getElementById(chartId);
-    selectedChart.style.display = 'block';
+    selectedChart.style.display = 'flex';
 }
 
 
-document.getElementById('cents-per-kwh-chart-btn').addEventListener('click', function() {
-    showChart('cents-per-kwh-chart')
-})
-document.getElementById('total-consumption-chart-btn').addEventListener('click', function() {
-    showChart('total-consumption-chart')
-})
-document.getElementById('emissions-to-gdp-btn').addEventListener('click', function() {
-    showChart('emissions-to-gdp')
-})
-document.getElementById('net-energy-btn').addEventListener('click', function() {
-    showChart('net-energy')
-})
-
-document.getElementById('energy-chart-form').addEventListener('input', netEnergyHandleFormChange)
 

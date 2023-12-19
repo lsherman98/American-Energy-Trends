@@ -20,9 +20,9 @@ export async function drawEmissionsToGDP() {
         return acc;
     }, {});
 
-    const margin = { top: 100, right: 60, bottom: 50, left: 80 };
+    const margin = { top: 100, right: 60, bottom: 50, left: 100 };
     const width = 1700 - margin.left - margin.right;
-    const height = 800 - margin.top - margin.bottom;
+    const height = 900 - margin.top - margin.bottom;
 
     // Create an SVG element
     const svg = d3.select("#emissions-to-gdp")
@@ -30,19 +30,9 @@ export async function drawEmissionsToGDP() {
         .attr("width", width + 200)
         .attr("height", height);
 
-    svg.append("text")
-        .attr("class", "chart-title")
-        .attr("x", margin.left)
-        .attr("y", margin.top - 100)
-        .style("font-size", "20px")
-        .style("font-weight", "bold")
-        .style("font-family", "sans-serif")
-        .text("Total CO2 Emissions & Total GDP");
 
-    // Extract years from your data
     const years = Object.keys(data);
 
-    // Define scales
     const xScale = d3.scaleLinear()
         .domain([d3.min(years), d3.max(years)])
         .range([margin.left, width - margin.right]);
@@ -51,7 +41,6 @@ export async function drawEmissionsToGDP() {
         .domain([0, d3.max(Object.values(data), d => Math.max(d.emissions, d.gdp))])
         .range([height - margin.bottom, margin.top]);
 
-    // Create area generators
     const emissionsArea = d3.area()
         .x(d => xScale(d.year))
         .y0(height - margin.bottom)
@@ -62,13 +51,10 @@ export async function drawEmissionsToGDP() {
         .y0(height - margin.bottom)
         .y1(d => yScale(d.gdp));
 
-    // Convert your data object into an array of objects
     const dataArray = years.map(year => ({ year, ...data[year] }));
 
-    // Create a group for the areas
     const areaGroup = svg.append("g");
 
-    // Append the emissions area
     areaGroup.append("path")
         .data([dataArray])
         .attr("class", "emissions-area")
@@ -76,7 +62,6 @@ export async function drawEmissionsToGDP() {
         .attr("fill", "red")
          .attr("fill-opacity", 0.7)
     
-    // Append the GDP area
     areaGroup.append("path")
         .data([dataArray])
         .attr("class", "gdp-area")
@@ -84,7 +69,6 @@ export async function drawEmissionsToGDP() {
         .attr("fill", "blue")
         .attr("fill-opacity", 0.7)
 
-    // Append axes
     const xAxis = d3.axisBottom(xScale)
         .tickFormat(d3.format("d"));
     const yAxis = d3.axisLeft(yScale);
@@ -100,20 +84,12 @@ export async function drawEmissionsToGDP() {
     const legend = svg.append("g")
         .attr("transform", `translate(${width - margin.right - 10}, ${margin.top})`)
         .attr("class", "legend-item")
-        
 
-    // Legend for GDP
-    // legend.append("rect")
-    //     .attr("x", 0)
-    //     .attr("y", 0)
-    //     .attr("width", 10)
-    //     .attr("height", 10)
-    //     .attr("fill", "blue");
 
     legend.append("text")
         .attr("x", 15)
         .attr("y", 8)
-        .text("GDP (in billions)")
+        .html("GDP - billions/$")
         .attr("class", "gdp-text")
         .style('fill', 'blue')
         .on("mouseover", function () {
@@ -129,18 +105,11 @@ export async function drawEmissionsToGDP() {
                 .attr("opacity", 1)
         });
 
-    // Legend for Emissions
-    // legend.append("rect")
-    //     .attr("x", 0)
-    //     .attr("y", 20)
-    //     .attr("width", 10)
-    //     .attr("height", 10)
-    //     .attr("fill", "red");
 
     legend.append("text")
         .attr("x", 15)
         .attr("y", 28)
-        .text("Emissions (in millions)")
+        .text("Emissions - millions/tons")
         .attr("class", "emissions-text")
         .style('fill', 'red')
         .on("mouseover", function () {
@@ -151,7 +120,7 @@ export async function drawEmissionsToGDP() {
         })
         .on("mouseout", function () {
             d3.selectAll(".emissions-area")
-                .attr("opacity", 1); // Reset opacity on mouseout
+                .attr("opacity", 1); 
             d3.selectAll(".gdp-area")
                 .attr("opacity", 1)
         });

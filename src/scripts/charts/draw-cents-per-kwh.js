@@ -9,7 +9,7 @@ export async function drawCentsPerKWH() {
     })
     // console.log(data)
 
-    const margin = { top: 70, right: 60, bottom: 50, left: 80 };
+    const margin = { top: 100, right: 60, bottom: 50, left: 100 };
     const width = 1600 - margin.left - margin.right;
     const height = 800 - margin.top - margin.bottom;
 
@@ -64,7 +64,7 @@ export async function drawCentsPerKWH() {
         .attr("transform", `translate(0,${height})`)
         .style("font-size", "14px")
         .call(d3.axisBottom(x)
-            .tickValues(x.ticks(d3.timeYear.every(5)))
+            .tickValues(x.ticks(d3.timeYear.every(2)))
             .tickFormat(d3.timeFormat("%Y")))
         .selectAll(".tick line")
         .style("stroke-opacity", 1)
@@ -176,14 +176,14 @@ export async function drawCentsPerKWH() {
         tooltipLineY.style("display", "none");
     });
 
-    svg.append("text")
-        .attr("class", "chart-title")
-        .attr("x", margin.left)
-        .attr("y", margin.top - 100)
-        .style("font-size", "20px")
-        .style("font-weight", "bold")
-        .style("font-family", "sans-serif")
-        .text("Average Cost(¢) per Kilowatt Hour (kWh)");
+    // svg.append("text")
+    //     .attr("class", "chart-title")
+    //     .attr("x", margin.left)
+    //     .attr("y", margin.top - 100)
+    //     .style("font-size", "20px")
+    //     .style("font-weight", "bold")
+    //     .style("font-family", "sans-serif")
+    //     .text("Average Cost(¢) per Kilowatt Hour (kWh)");
 
 
     // svg.append("text")

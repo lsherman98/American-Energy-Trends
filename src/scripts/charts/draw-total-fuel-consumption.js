@@ -1,6 +1,5 @@
 import * as d3 from "d3"
 import { totalConsumption } from "../data"
-import { cleanMSNData } from "../cleandata"
 
 export async function drawTotalConsumption() {
     const raw_data = await totalConsumption()
@@ -25,7 +24,7 @@ export async function drawTotalConsumption() {
     let data = dataByYear[selectedYear]
 
     const pie = d3.pie()
-    const arc = d3.arc().innerRadius(200).outerRadius(400)
+    const arc = d3.arc().innerRadius(175).outerRadius(325)
 
     const local = d3.local()
 
@@ -68,7 +67,7 @@ export async function drawTotalConsumption() {
         .attr("max", d3.max(raw_data, d => d.period))
         .on('input', (e) => {
             selectedYear = e.target.value
-            document.getElementById('selectedYear').textContent = selectedYear
+            document.getElementById('selected-year').textContent = selectedYear
 
             data = dataByYear[selectedYear]
 

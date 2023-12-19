@@ -1,5 +1,4 @@
 import * as d3 from "d3"
-import { hideNetEnergyForm, showNetEnergyForm } from "../handleform";
 import {netTotalEnergy} from "../data"
 
 
@@ -8,9 +7,9 @@ export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergy
     
     const data = await netTotalEnergy(startYear, endYear, selectedEnergyTypes)
 
-    const margin = {top: 70, right: 30, bottom: 40, left: 80};
-    const width = 1500 - margin.left - margin.right;
-    const height = 800 - margin.top - margin.bottom;
+    const margin = {top: 5, right: 30, bottom: 40, left: 20};
+    const width = 1500 - 80 - 30;
+    const height = 800 - 70 - 40;
 
     const x = d3.scaleTime()
         .domain(d3.extent(data, d => d.period))
@@ -298,7 +297,6 @@ export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergy
         .on("mouseout", e => {
             tooltip.style("display", "none");
         });
-   
 
 
     let legend_keys = ["Total", "Coal", "Geothermal", "Hydroelectric Conventional", "Natural Gas", "Solar", "Petroleum", 'Wood', "Wind", "Nuclear"]
@@ -309,26 +307,17 @@ export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergy
         .attr('margin', 10)
         .attr("class", "lineLegend")
         .attr("transform", function (d, i) {
-            const legendX = width + 10; // Adjust the left margin by changing this value
+            const legendX = width + 10; 
             const legendY = i * 20;
             return `translate(${legendX},${legendY})`
         });
 
     lineLegend.append("text").text(function (d) { return d; })
-        .attr("transform", "translate(15,9)"); //align texts with boxes
+        .attr("transform", "translate(15,9)");
 
     lineLegend.append("rect")
         .attr("fill", function (d, i) { return colorScale(i); })
         .attr("width", 10).attr("height", 10);
-
-    svg.append("text")
-        .attr("class", "chart-title")
-        .attr("x", margin.left)
-        .attr("y", margin.top - 100)
-        .style("font-size", "20px")
-        .style("font-weight", "bold")
-        .style("font-family", "sans-serif")
-        .text("Total Net Energy Generation by Fuel Type");
 
     }
 
