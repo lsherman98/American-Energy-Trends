@@ -7,9 +7,9 @@ export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergy
     
     const data = await netTotalEnergy(startYear, endYear, selectedEnergyTypes)
 
-    const margin = {top: 5, right: 30, bottom: 40, left: 20};
-    const width = 1500 - 80 - 30;
-    const height = 800 - 70 - 40;
+    const margin = {top: 5, right: 30, bottom: 20, left: 80};
+    const width = 1450 - margin.left - margin.right;
+    const height = 700 - margin.top - margin.bottom;
 
     const x = d3.scaleTime()
         .domain(d3.extent(data, d => d.period))
@@ -85,8 +85,8 @@ export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergy
 
             tooltip
                 .style("display", "block")
-                .style("left", `${xCoord + margin.left}px`)
-                .style("top", `${yCoord + margin.top}px`)
+                .style("left", `${xCoord + 150}px`)
+                .style("top", `${yCoord + 200}px`)
                 .text("Total")
         })
         .on("mouseout", e => {
@@ -108,8 +108,8 @@ export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergy
 
             tooltip
                 .style("display", "block")
-                .style("left", `${xCoord + margin.left}px`)
-                .style("top", `${yCoord + margin.top}px`)
+                .style("left", `${xCoord + 150}px`)
+                .style("top", `${yCoord + 200}px`)
                 .text("Coal")
         })
         .on("mouseout", e => {
@@ -130,8 +130,8 @@ export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergy
 
             tooltip
                 .style("display", "block")
-                .style("left", `${xCoord + margin.left}px`)
-                .style("top", `${yCoord + margin.top}px`)
+                .style("left", `${xCoord + 150}px`)
+                .style("top", `${yCoord + 200}px`)
                 .text("GeoThermal")
         })
         .on("mouseout", e => {
@@ -153,8 +153,8 @@ export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergy
 
             tooltip
                 .style("display", "block")
-                .style("left", `${xCoord + margin.left}px`)
-                .style("top", `${yCoord + margin.top}px`)
+                .style("left", `${xCoord + 150}px`)
+                .style("top", `${yCoord + 200}px`)
                 .text("Conventional HydroElectric")
         })
         .on("mouseout", e => {
@@ -176,8 +176,8 @@ export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergy
 
             tooltip
                 .style("display", "block")
-                .style("left", `${xCoord + margin.left}px`)
-                .style("top", `${yCoord + margin.top}px`)
+                .style("left", `${xCoord + 150}px`)
+                .style("top", `${yCoord + 200}px`)
                 .text("Natural Gas")
         })
         .on("mouseout", e => {
@@ -199,8 +199,8 @@ export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergy
 
             tooltip
                 .style("display", "block")
-                .style("left", `${xCoord + margin.left}px`)
-                .style("top", `${yCoord + margin.top}px`)
+                .style("left", `${xCoord + 150}px`)
+                .style("top", `${yCoord + 200}px`)
                 .text("Solar")
         })
         .on("mouseout", e => {
@@ -222,8 +222,8 @@ export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergy
 
             tooltip
                 .style("display", "block")
-                .style("left", `${xCoord + margin.left}px`)
-                .style("top", `${yCoord + margin.top}px`)
+                .style("left", `${xCoord + 150}px`)
+                .style("top", `${yCoord + 200}px`)
                 .text("Petroleum")
         })
         .on("mouseout", e => {
@@ -245,8 +245,8 @@ export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergy
 
             tooltip
                 .style("display", "block")
-                .style("left", `${xCoord + margin.left}px`)
-                .style("top", `${yCoord + margin.top}px`)
+                .style("left", `${xCoord + 150}px`)
+                .style("top", `${yCoord + 200}px`)
                 .text("Wood")
         })
         .on("mouseout", e => {
@@ -268,8 +268,8 @@ export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergy
 
             tooltip
                 .style("display", "block")
-                .style("left", `${xCoord + margin.left}px`)
-                .style("top", `${yCoord + margin.top}px`)
+                .style("left", `${xCoord + 150}px`)
+                .style("top", `${yCoord + 200}px`)
                 .text("Wind")
         })
         .on("mouseout", e => {
@@ -290,13 +290,14 @@ export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergy
 
             tooltip
                 .style("display", "block")
-                .style("left", `${xCoord + margin.left}px`)
-                .style("top", `${yCoord + margin.top}px`)
+                .style("left", `${xCoord + 150}px`)
+                .style("top", `${yCoord + 200}px`)
                 .text("Nuclear")
         })
         .on("mouseout", e => {
             tooltip.style("display", "none");
         });
+   
 
 
     let legend_keys = ["Total", "Coal", "Geothermal", "Hydroelectric Conventional", "Natural Gas", "Solar", "Petroleum", 'Wood', "Wind", "Nuclear"]
@@ -313,12 +314,15 @@ export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergy
         });
 
     lineLegend.append("text").text(function (d) { return d; })
-        .attr("transform", "translate(15,9)");
+        .attr("transform", "translate(15,9)"); 
 
     lineLegend.append("rect")
         .attr("fill", function (d, i) { return colorScale(i); })
         .attr("width", 10).attr("height", 10);
 
+
+
+        
     }
 
 
