@@ -146,12 +146,20 @@ body {
 }
 
 #cents-per-kwh-chart .title {
-  left: 25%;
+  left: 30%;
 }
 
 #total-consumption-chart .title {
   margin-top: 150px;
   margin-left: 200px;
+}
+
+#emissions-to-gdp .title {
+  left: 30%;
+}
+
+#net-energy .title {
+  padding-left: 95px;
 }
 
 .gdp-text {
@@ -165,10 +173,15 @@ body {
 }
 
 #net-energy-chart {
-  padding-left: 10px;
-  margin-top: 20px;
+  padding-left: 50px;
+  margin-top: 75px;
 }
 
 #energy-chart-form {
   font-family: "Merriweather", serif;
+}
+
+.github-link {
+  color: #333;
+  font-size: 24px;
 }
