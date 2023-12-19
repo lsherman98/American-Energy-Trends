@@ -3,7 +3,6 @@ import { emissionsToGDP } from "../data"
 
 export async function drawEmissionsToGDP() {
     let data = await emissionsToGDP()
-    console.log(data)
 
     data = data.reduce((acc, item) => {
         const { period, msn, value } = item;

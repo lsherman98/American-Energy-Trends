@@ -5,7 +5,6 @@ import {netTotalEnergy} from "../data"
 
 export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergyTypes) {
     document.getElementById('net-energy-chart').innerHTML = ``
-    // hideNetEnergyForm()
     
     const data = await netTotalEnergy(startYear, endYear, selectedEnergyTypes)
 
@@ -331,7 +330,6 @@ export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergy
         .style("font-family", "sans-serif")
         .text("Total Net Energy Generation by Fuel Type");
 
-    showNetEnergyForm()
     }
 
 

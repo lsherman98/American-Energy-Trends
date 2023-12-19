@@ -11,15 +11,32 @@
   </head>
 
   <body>
-    <div id="chart-container">
-      <div id="cents-per-kwh-chart"></div>
-      <div id="total-consumption-chart">
+      <div id="loading-screen">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+      </div>
+
+
+    <div class="navbar">
+      <button class="nav-button" id='cents-per-kwh-chart-btn'>Average Cost per Kilowatt Hour</button>
+      <button class="nav-button" id='total-consumption-chart-btn'>Total Fuel Consumption</button>
+      <button class="nav-button" id='emissions-to-gdp-btn'>Emissions & GDP/button>
+      <button class="nav-button" id='net-energy-btn'>Net Energy by Type</button>
+    </div>
+
+    <div id="cents-per-kwh-chart" class="chart">
+    </div>
+
+    <div id="total-consumption-chart" class="chart">
         <div id="consumption-pie-chart"></div>
         <input type="range" id="pie-chart-slider"></input>
         <span id="selectedYear">2022</span>
-      </div>
-      <div id="emissions-to-gdp"></div>
-      <div id="net-energy-chart-and-form">
+    </div>
+
+    <div id="emissions-to-gdp" class="chart">
+    </div>
+
+    <div id="net-energy" class="chart">
         <div id="net-energy-chart"></div>
         <form id="energy-chart-form">
           <label for="startYear">Start Year:</label>
@@ -30,20 +47,20 @@
           <br>
             <fieldset>
               <legend>Select up to 10 Energy Types:</legend>
-              <label><input type="checkbox" name="energyTypes" value="COAL">Coal</label>
-              <label><input type="checkbox" name="energyTypes" value="NATURAL GAS"> Natural Gas</label>
-              <label><input type="checkbox" name="energyTypes" value="CONVENTIONAL HYDROELECTRIC"> HydroElectric</label>
-              <label><input type="checkbox" name="energyTypes" value="WIND"> Wind</label>
-              <label><input type="checkbox" name="energyTypes" value="WOOD">Wood</label>
-              <label><input type="checkbox" name="energyTypes" value="PETROLEUM">Petroleum</label>
-              <label><input type="checkbox" name="energyTypes" value="NUCLEAR">Nuclear</label>
-              <label><input type="checkbox" name="energyTypes" value="SOLAR">Solar</label>
-              <label><input type="checkbox" name="energyTypes" value="GEOTHERMAL">Geothermal</label>
-              <label><input type="checkbox" name="energyTypes" value="TOTAL">Total</label>
+              <label><input type="checkbox" name="energyTypes" value="COAL" checked>Coal</label>
+              <label><input type="checkbox" name="energyTypes" value="NATURAL GAS" checked> Natural Gas</label>
+              <label><input type="checkbox" name="energyTypes" value="CONVENTIONAL HYDROELECTRIC" checked> HydroElectric</label>
+              <label><input type="checkbox" name="energyTypes" value="WIND" checked> Wind</label>
+              <label><input type="checkbox" name="energyTypes" value="WOOD" checked>Wood</label>
+              <label><input type="checkbox" name="energyTypes" value="PETROLEUM" checked>Petroleum</label>
+              <label><input type="checkbox" name="energyTypes" value="NUCLEAR" checked>Nuclear</label>
+              <label><input type="checkbox" name="energyTypes" value="SOLAR" checked>Solar</label>
+              <label><input type="checkbox" name="energyTypes" value="GEOTHERMAL" checked>Geothermal</label>
+              <label><input type="checkbox" name="energyTypes" value="TOTAL" checked>Total</label>
             </fieldset>
         </form>
-      </div>
     </div>
+
 
   </body>
 

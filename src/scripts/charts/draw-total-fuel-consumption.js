@@ -89,7 +89,4 @@ export async function drawTotalConsumption() {
                 });
         })
 
-
-
-    document.getElementById('total-consumption-chart').style.display = 'block'
 }
