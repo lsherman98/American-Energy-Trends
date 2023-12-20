@@ -6,18 +6,14 @@ import { netEnergyHandleFormChange } from "./scripts/handleform";
 
 const loadingScreen = document.getElementById('loading-screen');
 loadingScreen.style.display = 'flex';
-// document.getElementById('total-consumption-chart-btn').innerText = "Loading..."
-// document.getElementById('emissions-to-gdp-btn').innerText = "Loading..."
-// document.getElementById('net-energy-btn').innerText = "Loading..."
-// document.getElementById('cents-per-kwh-chart-btn').innerText = "Loading..."
 
 renderCentsPerKWH()
 renderTotalConsumption()
 renderEmissionToGDP()
 await renderNetTotalEnergy()
 
-loadingScreen.style.display = 'none'
 showChart('cents-per-kwh-chart')
+loadingScreen.style.display = 'none'
 
 
 document.getElementById('energy-chart-form').addEventListener('input', netEnergyHandleFormChange)
