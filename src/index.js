@@ -6,38 +6,19 @@ import { netEnergyHandleFormChange } from "./scripts/handleform";
 
 const loadingScreen = document.getElementById('loading-screen');
 loadingScreen.style.display = 'flex';
-await drawCentsPerKWH()
+// document.getElementById('total-consumption-chart-btn').innerText = "Loading..."
+// document.getElementById('emissions-to-gdp-btn').innerText = "Loading..."
+// document.getElementById('net-energy-btn').innerText = "Loading..."
+// document.getElementById('cents-per-kwh-chart-btn').innerText = "Loading..."
+
+renderCentsPerKWH()
+renderTotalConsumption()
+renderEmissionToGDP()
+await renderNetTotalEnergy()
+
 loadingScreen.style.display = 'none'
 showChart('cents-per-kwh-chart')
 
-document.getElementById('cents-per-kwh-chart-btn').addEventListener('click', function () {
-    showChart('cents-per-kwh-chart')
-})
-
-document.getElementById('total-consumption-chart-btn').innerText = "Loading..."
-document.getElementById('emissions-to-gdp-btn').innerText = "Loading..."
-document.getElementById('net-energy-btn').innerText = "Loading..."
-
-await drawTotalConsumption()
-document.getElementById('total-consumption-chart-btn').innerText = "Total Fuel Consumption"
-
-document.getElementById('total-consumption-chart-btn').addEventListener('click', function () {
-    showChart('total-consumption-chart')
-})
-
-await drawEmissionsToGDP()
-document.getElementById('emissions-to-gdp-btn').innerText = "Emissions & GDP"
-
-document.getElementById('emissions-to-gdp-btn').addEventListener('click', function () {
-    showChart('emissions-to-gdp')
-})
-
-await drawNetTotalEnergyChart()
-document.getElementById('net-energy-btn').innerText = "Net Energy by Type"
-
-document.getElementById('net-energy-btn').addEventListener('click', function () {
-    showChart('net-energy')
-})
 
 document.getElementById('energy-chart-form').addEventListener('input', netEnergyHandleFormChange)
 
@@ -50,5 +31,41 @@ function showChart(chartId) {
     selectedChart.style.display = 'flex';
 }
 
+async function renderCentsPerKWH() {
+    await drawCentsPerKWH()
+    
+    document.getElementById('cents-per-kwh-chart-btn').innerText = "Average Cost per Kilowatt Hour"
+    document.getElementById('cents-per-kwh-chart-btn').addEventListener('click', function () {
+        showChart('cents-per-kwh-chart')
+    })
 
+
+}
+
+async function renderTotalConsumption() {
+    await drawTotalConsumption()
+    document.getElementById('total-consumption-chart-btn').innerText = "Total Fuel Consumption"
+
+    document.getElementById('total-consumption-chart-btn').addEventListener('click', function () {
+        showChart('total-consumption-chart')
+    })
+}
+
+async function renderEmissionToGDP() {
+    await drawEmissionsToGDP()
+    document.getElementById('emissions-to-gdp-btn').innerText = "Emissions & GDP"
+
+    document.getElementById('emissions-to-gdp-btn').addEventListener('click', function () {
+        showChart('emissions-to-gdp')
+    })
+}
+
+async function renderNetTotalEnergy() {
+    await drawNetTotalEnergyChart()
+    document.getElementById('net-energy-btn').innerText = "Net Energy by Type"
+
+    document.getElementById('net-energy-btn').addEventListener('click', function () {
+        showChart('net-energy')
+    })
+}
 

@@ -4,9 +4,6 @@ export function cleanMSNData(data) {
 
     for (let i = 0; i < data.length; i++) {
         let object = data[i]
- 
-       
-
         switch (object.msn) {
             case "CLETPUS":
                 object.msn = "COAL"

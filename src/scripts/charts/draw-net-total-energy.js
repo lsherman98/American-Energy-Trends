@@ -55,14 +55,11 @@ export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergy
     svg.append("g")
         .attr("transform", `translate(0, ${height})`)
       .call(d3.axisBottom(x)
-        // .ticks(d3.timeYear.every(5))
         .tickFormat(d3.format("d"))
         )
 
     svg.append("g")
         .call(d3.axisLeft(y))
-
-   
 
     const line = d3.line()
         .x(d => x(d.period))

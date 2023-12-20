@@ -7,11 +7,11 @@ export async function drawCentsPerKWH() {
     data = data.filter((d) => {
         return typeof d.value === 'number'
     })
-    // console.log(data)
 
     const margin = { top: 100, right: 60, bottom: 50, left: 100 };
     const width = 1600 - margin.left - margin.right;
     const height = 800 - margin.top - margin.bottom;
+    
 
     const x = d3.scaleTime()
         .range([0, width]);
@@ -157,41 +157,17 @@ export async function drawCentsPerKWH() {
     tooltip
         .style("display", "block")
         .style("left", `${width + 90}px`)
-        .style("top", `${yPos + 68}px`)
+        .style("top", `${yPos + 195}px`)
         .html(`${d.value}¢`);
-    // tooltipRawDate
-    //     .style("display", "block")
-    //     .style("left", `${xPos + 60}px`)
-    //     .style("top", `${height + 53}px`)
-    //     .html(`${d.period`);
     });
 
     listeningRect.on("mouseleave", function () {
         circle.transition().duration(50).attr("r", 0);
         tooltip.style("display", "none");
-        // tooltipRawDate.style("display", "none");
         tooltipLineX.attr("x1", 0).attr("x2", 0);
         tooltipLineY.attr("y1", 0).attr("y2", 0);
         tooltipLineX.style("display", "none");
         tooltipLineY.style("display", "none");
     });
-
-    // svg.append("text")
-    //     .attr("class", "chart-title")
-    //     .attr("x", margin.left)
-    //     .attr("y", margin.top - 100)
-    //     .style("font-size", "20px")
-    //     .style("font-weight", "bold")
-    //     .style("font-family", "sans-serif")
-    //     .text("Average Cost(¢) per Kilowatt Hour (kWh)");
-
-
-    // svg.append("text")
-    //     .attr("class", "source-credit")
-    //     .attr("x", width - 110)
-    //     .attr("y", height + margin.bottom - 7)
-    //     .style("font-size", "12px")
-    //     .style("font-family", "sans-serif")
-    //     .text("Source: Yahoo Finance");
 
 }
