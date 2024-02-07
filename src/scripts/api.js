@@ -41,6 +41,7 @@ export function fetchNetTotalEnergy(startYear = '1949', endYear = '2023', select
 
 export function fetchCentsPerKWH(startYear = '1976-07', endYear = '2023-12') {
     const url = `https://api.eia.gov/v2/total-energy/data/?frequency=monthly&data[0]=value&facets[msn][]=ESTCUUS&start=${startYear}&end=${endYear}&sort[0][column]=period&sort[0][direction]=asc&offset=0&length=5000` + api_key
+    console.log(url)
 
     return fetch(url, { headers: { 'Accept': 'application/json' } })
         .then(res => {
