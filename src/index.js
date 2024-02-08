@@ -9,8 +9,8 @@ import { netEnergyHandleFormChange } from "./scripts/handleform";
 const loadingScreen = document.getElementById('loading-screen');
 
 await renderCentsPerKWH()
-renderTotalConsumption()
-renderNetTotalEnergy()
+await renderTotalConsumption()
+await renderNetTotalEnergy()
 
 loadingScreen.style.display = 'none'
 
