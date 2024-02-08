@@ -16,52 +16,49 @@
   </head>
 
   <body>
+    <div class="title-nav-container">
+      <div id="website-title">
+        <h1>
+          American <br>
+          Energy <br>
+          Trends
+        </h1>
+      </div> 
+      
+      <div class="navbar">
+        <button class="nav-button" id='cents-per-kwh-chart-btn'>Average Cost per Kilowatt Hour</button>
+        <button class="nav-button" id='total-consumption-chart-btn'>Total Fuel Consumption</button>
+        <!-- <button class="nav-button" id='emissions-to-gdp-btn'>Emissions & GDP</button> -->
+        <button class="nav-button" id='net-energy-btn'>Net Energy Generation</button>
+      </div>
+    </div>
+
     <div id="loading-screen">
       <div class="spinner"></div>
       <p>Loading...</p>
     </div>
 
-    <div id="website-title">
-      <h1>
-        American <br>
-        Energy <br>
-        Trends
-      </h1>
-    </div> 
-
-    <div class="navbar">
-      <button class="nav-button" id='cents-per-kwh-chart-btn'>Average Cost per Kilowatt Hour</button>
-      <button class="nav-button" id='total-consumption-chart-btn'>Total Fuel Consumption</button>
-      <button class="nav-button" id='emissions-to-gdp-btn'>Emissions & GDP</button>
-      <button class="nav-button" id='net-energy-btn'>Net Energy Generation</button>
-    </div>
-
-    <div id="cents-per-kwh-chart" class="chart">
-      <div class="title">
-        <h2>Average Cost per Kilowatt Hour</h2>
-        <p>Move your mouse over the chart to see the average cost in cents per kilowatt hour of that year!</p>
+    <div id="cents-per-kwh-chart-container" >
+      <div id="cents-per-kwh-chart">
+        <div id="cents-per-kwh-chart-title" class="title">
+          <h2>Average Cost per Kilowatt Hour</h2>
+          <p>Move your mouse over the chart to see the average cost in cents per kilowatt hour of that year!</p>
+        </div>
       </div>
     </div>
 
-    <div id="total-consumption-chart" class="chart">
-      <div class="title">
+    <div id="total-consumption-chart-container">
+      <div id="total-consumption-title">
         <h2>Total Fuel Consumption by Fuel Type</h2>
         <p>Move the slider to see the total fuel consumption for that year!</p>
         <input type="range" id="pie-chart-slider"></input>
         <span id="selected-year">1949</span>
       </div>
-      <div id="consumption-pie-chart"></div>
+      <div id="total-consumption-chart"></div>
     </div>
 
-    <div id="emissions-to-gdp" class="chart">
-      <div class="title">
-        <h2>CO2 Emissions & GDP Over Time</h2>
-        <p>Move your mouse over the legend and see the chart come to life!</p>
-      </div>
-    </div>
-
-    <div id="net-energy" class="chart">
-      <div class="title">
+    <div id="net-energy-chart-container" >
+      <div id="net-energy-chart-title" >
         <h2>Total Net Energy Generation by Fuel Type & Year</h2>
         <p>Specify the range of years using the "Start Year" and "End Year" fields. Choose up to 10 fuel types by selecting the corresponding checkboxes. The chart will dynamically update based on your selections. Try hovering over the lines in the chart!</p>
         <form id="energy-chart-form">
@@ -71,27 +68,30 @@
           <input type="number" id="endYear" name="endYear" value="2023" required min="1949" max="2023">
           <br>
           <br>
-            <fieldset>
-              <legend>Select up to 10 Energy Types:</legend>
-              <label><input type="checkbox" name="energyTypes" value="COAL" checked>Coal</label>
-              <label><input type="checkbox" name="energyTypes" value="NATURAL GAS" checked> Natural Gas</label>
-              <label><input type="checkbox" name="energyTypes" value="CONVENTIONAL HYDROELECTRIC" checked> HydroElectric</label>
-              <label><input type="checkbox" name="energyTypes" value="WIND" checked> Wind</label>
-              <label><input type="checkbox" name="energyTypes" value="WOOD" checked>Wood</label>
-              <label><input type="checkbox" name="energyTypes" value="PETROLEUM" checked>Petroleum</label>
-              <label><input type="checkbox" name="energyTypes" value="NUCLEAR" checked>Nuclear</label>
-              <label><input type="checkbox" name="energyTypes" value="SOLAR" checked>Solar</label>
-              <label><input type="checkbox" name="energyTypes" value="GEOTHERMAL" checked>Geothermal</label>
-              <label><input type="checkbox" name="energyTypes" value="TOTAL" checked>Total</label>
-            </fieldset>
+          <fieldset>
+            <legend>Select up to 10 Energy Types:</legend>
+            <label><input type="checkbox" name="energyTypes" value="COAL" checked>Coal</label>
+            <label><input type="checkbox" name="energyTypes" value="NATURAL GAS" checked> Natural Gas</label>
+            <label><input type="checkbox" name="energyTypes" value="CONVENTIONAL HYDROELECTRIC" checked> HydroElectric</label>
+            <label><input type="checkbox" name="energyTypes" value="WIND" checked> Wind</label>
+            <label><input type="checkbox" name="energyTypes" value="WOOD" checked>Wood</label>
+            <label><input type="checkbox" name="energyTypes" value="PETROLEUM" checked>Petroleum</label>
+            <label><input type="checkbox" name="energyTypes" value="NUCLEAR" checked>Nuclear</label>
+            <label><input type="checkbox" name="energyTypes" value="SOLAR" checked>Solar</label>
+            <label><input type="checkbox" name="energyTypes" value="GEOTHERMAL" checked>Geothermal</label>
+            <label><input type="checkbox" name="energyTypes" value="TOTAL" checked>Total</label>
+          </fieldset>
         </form>
       </div>
-      <div id="net-energy-chart"></div>
+      <div id="net-energy-chart">
+      </div>
     </div>
 
-    <a href="https://github.com/lsherman98" class="github-link">
-        <i class="fab fa-github"></i>
-    </a>
+    <div class="github-link-container">
+      <a href="https://github.com/lsherman98" class="github-link">
+          <i class="fab fa-github"></i>
+      </a>
+    </div>
   </body>
 
 </html>

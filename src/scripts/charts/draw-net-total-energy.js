@@ -1,15 +1,13 @@
 import * as d3 from "d3"
 import {netTotalEnergy} from "../data"
+import { net_data } from "./net_data"
 
 
 export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergyTypes) {
     document.getElementById('net-energy-chart').innerHTML = ``
-    
     const data = await netTotalEnergy(startYear, endYear, selectedEnergyTypes)
-
-    const margin = {top: 5, right: 30, bottom: 20, left: 80};
-    const width = 1450 - margin.left - margin.right;
-    const height = 700 - margin.top - margin.bottom;
+    const width = 1450;
+    const height = 550
 
     const x = d3.scaleTime()
         .domain(d3.extent(data, d => d.period))
@@ -30,18 +28,17 @@ export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergy
     const wind = data.filter(d => d.msn === 'WIND')
     const nuclear = data.filter(d => d.msn === 'NUCLEAR')
 
-
-
     const svg = d3.select("#net-energy-chart")
         .append("svg")
-            .attr("width", width + margin.left + margin.right + 200)
-            .attr("height", height + margin.top + margin.bottom)
+            // .attr("width", width + margin.left + margin.right + 200)
+            // .attr("height", height + margin.top + margin.bottom)
+        .attr("viewBox", `0 0 ${width + 100} ${height + 25}`)
         .append("g")
-            .attr("transform", `translate(${margin.left}, ${margin.top})`)
+        .attr("transform", `translate(0, 0)`)
 
     svg.append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", 0 - margin.left)
+        .attr("y", 0 - 80)
         .attr("x", 0 - height / 2)
         .attr("dy", "1em")
         .style("text-anchor", "middle")
@@ -83,7 +80,7 @@ export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergy
             tooltip
                 .style("display", "block")
                 .style("left", `${xCoord + 150}px`)
-                .style("top", `${yCoord + 200}px`)
+                .style("top", `${yCoord + 300}px`)
                 .text("Total")
         })
         .on("mouseout", e => {
@@ -307,7 +304,7 @@ export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergy
         .attr("transform", function (d, i) {
             const legendX = width + 10; 
             const legendY = i * 20;
-            return `translate(${legendX},${legendY})`
+            return `translate(${legendX},${legendY + 5})`
         });
 
     lineLegend.append("text").text(function (d) { return d; })

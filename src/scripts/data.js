@@ -10,7 +10,8 @@ export async function netTotalEnergy(startYear, endYear, selectedEnergyTypes) {
     } else {
         try {
             data = await fetchNetTotalEnergy()
-            return cleanMSNData(data)
+            let cleaned = await cleanMSNData(data)
+            return cleaned
         } catch (error) {
             console.error('Error in netTotalEnergy:', error);
             throw error;

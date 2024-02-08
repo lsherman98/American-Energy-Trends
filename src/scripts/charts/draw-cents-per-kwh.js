@@ -3,15 +3,16 @@ import {centsPerKWH} from "../data"
 
 export async function drawCentsPerKWH() {
 
-    let data = await centsPerKWH()
-    data = data.filter((d) => {
-        return typeof d.value === 'number'
-    })
-
-    const margin = { top: 100, right: 60, bottom: 50, left: 100 };
-    const width = 1600 - margin.left - margin.right;
-    const height = 800 - margin.top - margin.bottom;
-    
+    let data;
+    await centsPerKWH()
+        .then(res => {
+            data = res.filter((d) => {
+                return d.value !== 'Not Available'
+            })
+        })
+        
+    const width = 1400
+    const height = 600
 
     const x = d3.scaleTime()
         .range([0, width]);
@@ -21,12 +22,11 @@ export async function drawCentsPerKWH() {
 
     const svg = d3.select("#cents-per-kwh-chart")
         .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
+        .attr("viewBox", `0 0 ${width + 25} ${height + 25}`)
         .append("g")
-        .attr("transform", `translate(${margin.left},${margin.top})`);
+        .attr("transform", `translate(0,0)`)
     
-    const tooltip = d3.select("body")
+    const tooltip = d3.select("#cents-per-kwh-chart")
         .append("div")
         .attr("class", "tooltip");
 
@@ -156,8 +156,8 @@ export async function drawCentsPerKWH() {
 
     tooltip
         .style("display", "block")
-        .style("left", `${width + 90}px`)
-        .style("top", `${yPos + 195}px`)
+        .style("right", `${125}px`)
+        .style("top", `${yPos + 200}px`)
         .html(`${d.value}¢`);
     });
 

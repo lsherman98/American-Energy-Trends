@@ -1,9 +1,10 @@
 export function cleanMSNData(data) {
         
-    data = data.filter((object) => typeof object.value === 'number')
+    data = data.filter((object) => object.value !== 'Not Available')
 
     for (let i = 0; i < data.length; i++) {
         let object = data[i]
+        object.value = parseFloat(object.value)
         switch (object.msn) {
             case "CLETPUS":
                 object.msn = "COAL"

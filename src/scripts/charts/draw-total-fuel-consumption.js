@@ -28,10 +28,9 @@ export async function drawTotalConsumption() {
 
     const local = d3.local()
 
-    const svg = d3.select('#consumption-pie-chart')
+    const svg = d3.select('#total-consumption-chart')
         .append("svg")
-        .attr('width', 800)
-        .attr("height", 800)
+        .attr("viewBox", `0 0 800 800`)
         .append('g')
         .attr('transform', 'translate(400, 400)')
 
