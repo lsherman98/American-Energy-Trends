@@ -7,7 +7,7 @@ export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergy
     document.getElementById('net-energy-chart').innerHTML = ``
     const data = await netTotalEnergy(startYear, endYear, selectedEnergyTypes)
     const width = 1450;
-    const height = 550
+    const height = 500
 
     const x = d3.scaleTime()
         .domain(d3.extent(data, d => d.period))

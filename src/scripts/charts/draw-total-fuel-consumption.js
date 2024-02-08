@@ -24,15 +24,15 @@ export async function drawTotalConsumption() {
     let data = dataByYear[selectedYear]
 
     const pie = d3.pie()
-    const arc = d3.arc().innerRadius(175).outerRadius(325)
+    const arc = d3.arc().innerRadius(125).outerRadius(250)
 
     const local = d3.local()
 
     const svg = d3.select('#total-consumption-chart')
         .append("svg")
-        .attr("viewBox", `0 0 800 800`)
+        .attr("viewBox", `0 0 700 700`)
         .append('g')
-        .attr('transform', 'translate(400, 400)')
+        .attr('transform', 'translate(350, 350)')
 
 
     const path = svg.selectAll('path')
