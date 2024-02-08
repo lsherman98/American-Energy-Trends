@@ -32,7 +32,7 @@ function showChart(chartId) {
 async function renderCentsPerKWH() {
     await drawCentsPerKWH()
     
-    document.getElementById('cents-per-kwh-chart-btn').innerText = "Average Cost per Kilowatt Hour"
+    // document.getElementById('cents-per-kwh-chart-btn').innerText = "Average Cost per Kilowatt Hour"
     document.getElementById('cents-per-kwh-chart-btn').addEventListener('click', function () {
         showChart('cents-per-kwh-chart-container')
     })
@@ -40,7 +40,7 @@ async function renderCentsPerKWH() {
 
 async function renderTotalConsumption() {
     await drawTotalConsumption()
-    document.getElementById('total-consumption-chart-btn').innerText = "Total Fuel Consumption"
+    // document.getElementById('total-consumption-chart-btn').innerText = "Total Fuel Consumption"
 
     document.getElementById('total-consumption-chart-btn').addEventListener('click', function () {
         showChart('total-consumption-chart-container')
@@ -58,7 +58,7 @@ async function renderTotalConsumption() {
 
 async function renderNetTotalEnergy() {
     await drawNetTotalEnergyChart()
-    document.getElementById('net-energy-btn').innerText = "Net Energy by Type"
+    // document.getElementById('net-energy-btn').innerText = "Net Energy by Type"
 
     document.getElementById('net-energy-btn').addEventListener('click', function () {
         showChart('net-energy-chart-container')
