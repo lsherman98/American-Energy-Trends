@@ -8,11 +8,11 @@ import { netEnergyHandleFormChange } from "./scripts/handleform";
 
 const loadingScreen = document.getElementById('loading-screen');
 
-await renderCentsPerKWH()
-await renderTotalConsumption()
-await renderNetTotalEnergy()
+renderCentsPerKWH()
+renderTotalConsumption()
+renderNetTotalEnergy()
 
-loadingScreen.style.display = 'none'
+
 
 showChart('cents-per-kwh-chart-container')
 
@@ -31,7 +31,7 @@ function showChart(chartId) {
 
 async function renderCentsPerKWH() {
     await drawCentsPerKWH()
-    
+    loadingScreen.style.display = 'none'
     // document.getElementById('cents-per-kwh-chart-btn').innerText = "Average Cost per Kilowatt Hour"
     document.getElementById('cents-per-kwh-chart-btn').addEventListener('click', function () {
         showChart('cents-per-kwh-chart-container')

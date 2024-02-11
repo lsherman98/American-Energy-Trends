@@ -22,7 +22,7 @@ export async function drawCentsPerKWH() {
 
     const svg = d3.select("#cents-per-kwh-chart")
         .append("svg")
-        .attr("viewBox", `0 0 ${width + 25} ${height + 25}`)
+        .attr("viewBox", `0 0 ${width + 40} ${height + 40}`)
         .append("g")
         .attr("transform", `translate(0,0)`)
     

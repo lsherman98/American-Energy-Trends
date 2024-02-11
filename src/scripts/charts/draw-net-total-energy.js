@@ -32,7 +32,7 @@ export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergy
         .append("svg")
             // .attr("width", width + margin.left + margin.right + 200)
             // .attr("height", height + margin.top + margin.bottom)
-        .attr("viewBox", `0 0 ${width + 100} ${height + 25}`)
+        .attr("viewBox", `0 0 ${width + 125} ${height + 25}`)
         .append("g")
         .attr("transform", `translate(0, 0)`)
 
@@ -294,7 +294,7 @@ export async function drawNetTotalEnergyChart(startYear, endYear, selectedEnergy
    
 
 
-    let legend_keys = ["Total", "Coal", "Geothermal", "Hydroelectric Conventional", "Natural Gas", "Solar", "Petroleum", 'Wood', "Wind", "Nuclear"]
+    let legend_keys = ["Total", "Coal", "Geothermal", "Hydroelectric", "Natural Gas", "Solar", "Petroleum", 'Wood', "Wind", "Nuclear"]
 
     let lineLegend = svg.selectAll(".lineLegend")
         .data(legend_keys)
