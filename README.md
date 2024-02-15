@@ -3,13 +3,13 @@
 The [American Energy Trends](https://lsherman98.github.io/American-Energy-Trends/) website is a data visualization project looking at trends in US energy consumption and generation over the years. It looks at four different data relationships and has an interactive visualization for each relationship. On visiting the website, it fetches the data from the API, renders the charts, and lands you on the first chart. Using the easy to use navigation bar you can extremely quickly switch between the different charts. Interacting with the charts was also designed to be extremely intuitive, with instant reaction from the webpage. No need to wait around for the chart to re-render. 
 
 ## Cost per Kilowatt Hour
-![Cost per Kilowatt Hour](./assests/2.png)
+![Cost per Kilowatt Hour](./assets/2.png)
 
 The first visual of the website is an area chart visualizing the cost of energy over time. You can interact it while hovering your pointer over anyhere on the line and it will draw lines straight out to the x and y axis showing exactly what year that point is referencing and its value. 
 
 
 ## Total Consumption by Fuel
-![Total Consumption by Fuel](./assests/3.png)
+![Total Consumption by Fuel](./assets/3.png)
 
 This fun pie chart shows you the amount of a specific fuel the US consumes relative to other types. Moving the slider left or right lets you choose from which year the data on the chart will represent. Moving it to the left brings you closer to 1949, the earliest data is available for, and moving it to the right brings you closer to 2022, the latest year data was available for at the time.  
 
@@ -40,7 +40,7 @@ The code above is what allows the chart to animate in real time and show new dat
 
 
  ## Net Total Energy Generation
-![Net Total Energy Generation](./assests/4.png)
+![Net Total Energy Generation](./assets/4.png)
 
 The Net Total Energy line chart allows for the most control in choosing which data gets shown. With a simple and easy to use options selector, you can pick a range of years and up to 10 different types of fuel. The chart will adjust in real time based on your selections. You can also hover over any line on the chart and it will display what fuel that line represents.
 
