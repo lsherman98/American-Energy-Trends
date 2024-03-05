@@ -1,6 +1,6 @@
 # American Energy Trends
 
-The [American Energy Trends](https://lsherman98.github.io/American-Energy-Trends/) website is a data visualization project looking at trends in US energy consumption and generation over the years. It looks at four different data relationships and has an interactive visualization for each relationship. On visiting the website, it fetches the data from the API, renders the charts, and lands you on the first chart. Using the easy to use navigation bar you can extremely quickly switch between the different charts. Interacting with the charts was also designed to be extremely intuitive, with instant reaction from the webpage. No need to wait around for the chart to re-render. 
+The [American Energy Trends](https://lsherman98.github.io/American-Energy-Trends/) website is a data visualization project looking at trends in US energy consumption and generation over the years. It looks at three different data relationships and has an interactive visualization for each relationship. On visiting the website, it fetches the data from the API, renders the charts, and lands you on the first chart. Using the easy to use navigation bar you can extremely quickly switch between the different charts. Interacting with the charts was also designed to be extremely intuitive, with instant reaction from the webpage. No need to wait around for the chart to re-render. 
 
 ## Cost per Kilowatt Hour
 ![Cost per Kilowatt Hour](./assets/2.png)
